@@ -1,0 +1,521 @@
+/* ========== 全局设置 ========== */
+/* 设置所有元素的盒子模型为 border-box，防止尺寸计算混乱 */
+* {
+    box-sizing: border-box;
+}
+
+/* 设置整个页面的背景颜色、字体和基础颜色 */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f2f2f2; /* 整体浅灰背景 */
+    color: #333;
+}
+
+/* ========== 页面布局容器 ========== */
+/* 设置主容器宽度，居中显示，左右两栏布局 */
+.container {
+    max-width: 960px;
+    margin: 40px auto; /* 上下间距40px，左右自动居中 */
+    padding: 0 20px;
+    display: flex;
+    gap: 40px; /* 左右栏之间的间距 */
+}
+
+/* ========== 左侧 Sidebar 区域 ========== */
+/* 负责放置左侧两张卡片（头像信息和联系方式） */
+.sidebar {
+    width: 100%;
+    max-width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 40px; /* 距离顶部的距离，可自调 */
+    align-self: flex-start;
+    height: fit-content;
+}
+
+/* ========== 卡片通用样式 ========== */
+/* 应用于头像卡和联系卡：白底、圆角、阴影 */
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+    min-height: 100px;           /* ✅ 防止过短 */
+    overflow-wrap: break-word;   /* ✅ 防止超出 */
+    word-break: break-word;
+}
+
+/* ========== 左侧头像卡片内容 ========== */
+/* 设置头像图片样式 */
+.avatar {
+    width: 88%;
+    max-width: 100%; /* 限制不放大 */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;          /* ✅ 转为块级元素 */
+    margin-left: auto;       /* ✅ 左右 margin 自动 */
+    margin-right: auto;
+}
+
+/* “Hello I’m ” 主标题 */
+h1 {
+    font-size: 20px;
+    margin: 15px;
+    font-weight: normal;
+}
+
+/* 姓名加粗 */
+h1 span {
+    font-weight: bold;
+    display: block;
+}
+
+/* 职业描述 */
+.title {
+    font-size: 14px;
+    color: #666;
+    margin: 15px;
+}
+
+/* “Available for work” 状态徽章 */
+.status {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    background: #f3f3f3;
+    padding: 5px 12px;
+    border-radius: 999px; /* 胶囊形 */
+    margin-bottom: 6px;
+}
+
+
+/* 地理位置文本 */
+.location {
+    font-size: 13px;
+    color: #555;
+    margin: 15px;
+}
+
+/* ========== 联系卡片内容 ========== */
+/* 联系方式的每行文本 */
+.contact-card p {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+/* “Download CV” 和 “Contact Me” 的按钮容器 */
+.buttons {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 按钮基础样式 */
+.btn-outline, .btn-solid {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* 白底黑字按钮：Download CV */
+.btn-outline {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+}
+
+/* 黑底白字按钮：Contact Me */
+.btn-solid {
+    background: #000;
+    color: #fff;
+}
+
+/* ========== 右侧主内容区域 ========== */
+/* 占据剩余空间 */
+.main-content {
+    flex: 1;
+    width: 65%;
+    padding: 0 24px;
+}
+
+/* 每个内容块（ABOUT、SKILLS等）外框 */
+.section {
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+/* “ABOUT”、“SKILLS” 等小标题徽章样式 */
+.section-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background: BLACK;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    margin-bottom: 14px;
+}
+
+/* 关于部分的正文文本 */
+.about-text {
+    font-size: 15px;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+/* 技能胶囊标签容器 */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 每个技能标签的样式（胶囊形） */
+.skill-tag {
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+
+/* logo 图标 */
+/* leuven logo2 图标 */
+.exp-logo2 {
+    width: 45px;
+    height: 45px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+/* nanda changanda logo1 图标 */
+.exp-logo1 {
+    width: 45px;
+    height: 45px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+
+
+/* ========== EXPERIENCE 区块整体 ========== */
+.experience-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 每张卡片样式 */
+.experience-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 上半部分：logo + 公司 + 日期 + 折叠箭头 */
+.experience-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* logo 图标 */
+.exp-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* 公司名 + 职位 */
+.exp-info {
+    flex-grow: 1;
+}
+
+.exp-role {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.exp-title {
+    font-size: 13px;
+    color: #666;
+}
+
+/* 日期 */
+.exp-date {
+    font-size: 13px;
+    color: #555;
+    margin-left: auto;
+}
+
+/* 折叠图标（箭头 or 关闭） */
+.exp-toggle {
+    font-size: 16px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* 描述文字，默认隐藏 */
+.experience-description {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #444;
+    display: none;
+    line-height: 1.5;
+}
+
+/* 激活展开后显示描述内容 */
+.experience-card.active .experience-description {
+    display: block;
+}
+
+/* 展开后箭头变旋转或替换为 x */
+.experience-card.active .exp-toggle {
+    transform: rotate(180deg);
+    content: "×";
+}
+
+
+/* ========== TECH STACK 滑动图标区域 ========== */
+
+/* 外层白底卡片容器，带圆角和阴影 */
+.techstack-wrapper {
+    background: transparent;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 20px;
+    position: relative;
+}
+
+/* 滑动容器 */
+.techstack-slider {
+    display: flex;
+    gap: 32px;
+    animation: slide-left 20s linear infinite;
+}
+
+/* 每个图标样式 */
+.techstack-slider img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.techstack-slider img:hover {
+    transform: scale(1.1);
+}
+
+/* 滚动动画定义 */
+@keyframes slide-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* ========== PROJECTS 横滑卡片区域 ========== */
+
+/* 整体容器 */
+.projects-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 横向滑动容器 */
+.projects-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+
+.projects-slider {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.projects-slider::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* 单个项目卡片样式 */
+.project-card {
+    min-width: 260px;
+    max-width: 280px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    padding: 16px;
+    flex-shrink: 0;
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    object-fit: cover;
+    height: 160px;
+}
+
+.project-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* 查看按钮 */
+.project-btn {
+    display: inline-block;
+    font-size: 13px;
+    color: #333;
+    background: #f2f2f2;
+    padding: 6px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* 左右滚动按钮 */
+.scroll-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+    font-size: 22px;
+    z-index: 10;
+}
+
+
+.scroll-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+}
+
+
+.scroll-btn.left {
+    left: -10px;
+}
+
+.scroll-btn.right {
+    right: -10px;
+}
+
+
+.recognition-item {
+    margin-bottom: 16px;
+}
+.recognition-item .dot-line {
+    flex-grow: 1;
+    border-bottom: 1px dashed #ccc;
+    display: inline-block;
+    margin: 0 8px;
+    height: 10px;
+    vertical-align: middle;
+}
+.subtext {
+    font-size: 13px;
+    color: #777;
+    margin-top: -8px;
+    margin-left: 2px;
+}
+.recommend-card {
+    display: flex;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.recommend-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    object-fit: cover;
+    margin-right: 16px;
+}
+.recommend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.recommend-info {
+    flex: 1;
+}
+.recommend-date {
+    font-size: 12px;
+    color: #999;
+}
+.light {
+    color: #777;
+    font-weight: normal;
+}
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+.link-button {
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    display: inline-block;
+    transition: background 0.2s;
+}
+.link-button:hover {
+    background: #f0f0f0;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.contact-form button {
+    width: 100%;
+    font-size: 15px;
+}
